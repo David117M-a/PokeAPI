@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PokemonModelStoreContainer" CdmEntityContainer="PokemonEntities">
+    <EntitySetMapping Name="Entrenadores">
+      <EntityTypeMapping TypeName="PokemonModel.Entrenadore">
+        <MappingFragment StoreEntitySet="Entrenadores">
+          <ScalarProperty Name="ID_Entrenadores" ColumnName="ID_Entrenadores" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="userPass" ColumnName="userPass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipos">
+      <EntityTypeMapping TypeName="PokemonModel.Equipos">
+        <MappingFragment StoreEntitySet="Equipos">
+          <ScalarProperty Name="ID_Equipos" ColumnName="ID_Equipos" />
+          <ScalarProperty Name="nombreEquipo" ColumnName="nombreEquipo" />
+          <ScalarProperty Name="entrenador" ColumnName="entrenador" />
+          <ScalarProperty Name="primerPokemon" ColumnName="primerPokemon" />
+          <ScalarProperty Name="segundoPokemon" ColumnName="segundoPokemon" />
+          <ScalarProperty Name="tercerPokemon" ColumnName="tercerPokemon" />
+          <ScalarProperty Name="cuartoPokemon" ColumnName="cuartoPokemon" />
+          <ScalarProperty Name="quintoPokemon" ColumnName="quintoPokemon" />
+          <ScalarProperty Name="sextoPokemon" ColumnName="sextoPokemon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pokedexes">
+      <EntityTypeMapping TypeName="PokemonModel.Pokedex">
+        <MappingFragment StoreEntitySet="Pokedex">
+          <ScalarProperty Name="ID_Pokedex" ColumnName="ID_Pokedex" />
+          <ScalarProperty Name="nombrePokemon" ColumnName="nombrePokemon" />
+          <ScalarProperty Name="alturaMetros" ColumnName="alturaMetros" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="pesoKg" ColumnName="pesoKg" />
+          <ScalarProperty Name="habilidad" ColumnName="habilidad" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="debilidad" ColumnName="debilidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

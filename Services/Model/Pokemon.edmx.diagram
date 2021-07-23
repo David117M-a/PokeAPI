@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c7cd311205534e50865c31a038d8b2d2" Name="Diagram1">
+        <EntityTypeShape EntityType="PokemonModel.Entrenadore" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="PokemonModel.Equipos" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PokemonModel.Pokedex" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="PokemonModel.Fk_Entrenador" ManuallyRouted="false" />
+        <AssociationConnector Association="PokemonModel.Fk_CuartoPokemon" ManuallyRouted="false" />
+        <AssociationConnector Association="PokemonModel.Fk_PrimerPokemon" ManuallyRouted="false" />
+        <AssociationConnector Association="PokemonModel.Fk_QuintoPokemon" ManuallyRouted="false" />
+        <AssociationConnector Association="PokemonModel.Fk_SegundoPokemon" ManuallyRouted="false" />
+        <AssociationConnector Association="PokemonModel.Fk_SextoPokemon" ManuallyRouted="false" />
+        <AssociationConnector Association="PokemonModel.Fk_TercerPokemon" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

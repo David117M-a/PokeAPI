@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PokemonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Entrenadores">
+          <Key>
+            <PropertyRef Name="ID_Entrenadores" />
+          </Key>
+          <Property Name="ID_Entrenadores" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fullname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="userPass" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="ID_Equipos" />
+          </Key>
+          <Property Name="ID_Equipos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreEquipo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="entrenador" Type="int" Nullable="false" />
+          <Property Name="primerPokemon" Type="int" Nullable="false" />
+          <Property Name="segundoPokemon" Type="int" Nullable="false" />
+          <Property Name="tercerPokemon" Type="int" Nullable="false" />
+          <Property Name="cuartoPokemon" Type="int" Nullable="false" />
+          <Property Name="quintoPokemon" Type="int" Nullable="false" />
+          <Property Name="sextoPokemon" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pokedex">
+          <Key>
+            <PropertyRef Name="ID_Pokedex" />
+          </Key>
+          <Property Name="ID_Pokedex" Type="int" Nullable="false" />
+          <Property Name="nombrePokemon" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="alturaMetros" Type="float" Nullable="false" />
+          <Property Name="categoria" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pesoKg" Type="float" Nullable="false" />
+          <Property Name="habilidad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sexo" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="debilidad" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="Fk_CuartoPokemon">
+          <End Role="Pokedex" Type="Self.Pokedex" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokedex">
+              <PropertyRef Name="ID_Pokedex" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="cuartoPokemon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Entrenador">
+          <End Role="Entrenadores" Type="Self.Entrenadores" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrenadores">
+              <PropertyRef Name="ID_Entrenadores" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="entrenador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_PrimerPokemon">
+          <End Role="Pokedex" Type="Self.Pokedex" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokedex">
+              <PropertyRef Name="ID_Pokedex" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="primerPokemon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_QuintoPokemon">
+          <End Role="Pokedex" Type="Self.Pokedex" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokedex">
+              <PropertyRef Name="ID_Pokedex" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="quintoPokemon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_SegundoPokemon">
+          <End Role="Pokedex" Type="Self.Pokedex" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokedex">
+              <PropertyRef Name="ID_Pokedex" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="segundoPokemon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_SextoPokemon">
+          <End Role="Pokedex" Type="Self.Pokedex" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokedex">
+              <PropertyRef Name="ID_Pokedex" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="sextoPokemon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_TercerPokemon">
+          <End Role="Pokedex" Type="Self.Pokedex" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokedex">
+              <PropertyRef Name="ID_Pokedex" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="tercerPokemon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PokemonModelStoreContainer">
+          <EntitySet Name="Entrenadores" EntityType="Self.Entrenadores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipos" EntityType="Self.Equipos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pokedex" EntityType="Self.Pokedex" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Fk_CuartoPokemon" Association="Self.Fk_CuartoPokemon">
+            <End Role="Pokedex" EntitySet="Pokedex" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Entrenador" Association="Self.Fk_Entrenador">
+            <End Role="Entrenadores" EntitySet="Entrenadores" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_PrimerPokemon" Association="Self.Fk_PrimerPokemon">
+            <End Role="Pokedex" EntitySet="Pokedex" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_QuintoPokemon" Association="Self.Fk_QuintoPokemon">
+            <End Role="Pokedex" EntitySet="Pokedex" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_SegundoPokemon" Association="Self.Fk_SegundoPokemon">
+            <End Role="Pokedex" EntitySet="Pokedex" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_SextoPokemon" Association="Self.Fk_SextoPokemon">
+            <End Role="Pokedex" EntitySet="Pokedex" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_TercerPokemon" Association="Self.Fk_TercerPokemon">
+            <End Role="Pokedex" EntitySet="Pokedex" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PokemonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Entrenadore">
+          <Key>
+            <PropertyRef Name="ID_Entrenadores" />
+          </Key>
+          <Property Name="ID_Entrenadores" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userPass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Equipos" Relationship="Self.Fk_Entrenador" FromRole="Entrenadores" ToRole="Equipos" />
+        </EntityType>
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="ID_Equipos" />
+          </Key>
+          <Property Name="ID_Equipos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreEquipo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="entrenador" Type="Int32" Nullable="false" />
+          <Property Name="primerPokemon" Type="Int32" Nullable="false" />
+          <Property Name="segundoPokemon" Type="Int32" Nullable="false" />
+          <Property Name="tercerPokemon" Type="Int32" Nullable="false" />
+          <Property Name="cuartoPokemon" Type="Int32" Nullable="false" />
+          <Property Name="quintoPokemon" Type="Int32" Nullable="false" />
+          <Property Name="sextoPokemon" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Entrenadore" Relationship="Self.Fk_Entrenador" FromRole="Equipos" ToRole="Entrenadores" />
+          <NavigationProperty Name="Pokedex" Relationship="Self.Fk_CuartoPokemon" FromRole="Equipos" ToRole="Pokedex" />
+          <NavigationProperty Name="Pokedex1" Relationship="Self.Fk_PrimerPokemon" FromRole="Equipos" ToRole="Pokedex" />
+          <NavigationProperty Name="Pokedex2" Relationship="Self.Fk_QuintoPokemon" FromRole="Equipos" ToRole="Pokedex" />
+          <NavigationProperty Name="Pokedex3" Relationship="Self.Fk_SegundoPokemon" FromRole="Equipos" ToRole="Pokedex" />
+          <NavigationProperty Name="Pokedex4" Relationship="Self.Fk_SextoPokemon" FromRole="Equipos" ToRole="Pokedex" />
+          <NavigationProperty Name="Pokedex5" Relationship="Self.Fk_TercerPokemon" FromRole="Equipos" ToRole="Pokedex" />
+        </EntityType>
+        <EntityType Name="Pokedex">
+          <Key>
+            <PropertyRef Name="ID_Pokedex" />
+          </Key>
+          <Property Name="ID_Pokedex" Type="Int32" Nullable="false" />
+          <Property Name="nombrePokemon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="alturaMetros" Type="Double" Nullable="false" />
+          <Property Name="categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pesoKg" Type="Double" Nullable="false" />
+          <Property Name="habilidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sexo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="debilidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Equipos" Relationship="Self.Fk_CuartoPokemon" FromRole="Pokedex" ToRole="Equipos" />
+          <NavigationProperty Name="Equipos1" Relationship="Self.Fk_PrimerPokemon" FromRole="Pokedex" ToRole="Equipos" />
+          <NavigationProperty Name="Equipos2" Relationship="Self.Fk_QuintoPokemon" FromRole="Pokedex" ToRole="Equipos" />
+          <NavigationProperty Name="Equipos3" Relationship="Self.Fk_SegundoPokemon" FromRole="Pokedex" ToRole="Equipos" />
+          <NavigationProperty Name="Equipos4" Relationship="Self.Fk_SextoPokemon" FromRole="Pokedex" ToRole="Equipos" />
+          <NavigationProperty Name="Equipos5" Relationship="Self.Fk_TercerPokemon" FromRole="Pokedex" ToRole="Equipos" />
+        </EntityType>
+        <Association Name="Fk_Entrenador">
+          <End Role="Entrenadores" Type="Self.Entrenadore" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrenadores">
+              <PropertyRef Name="ID_Entrenadores" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="entrenador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_CuartoPokemon">
+          <End Role="Pokedex" Type="Self.Pokedex" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokedex">
+              <PropertyRef Name="ID_Pokedex" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="cuartoPokemon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_PrimerPokemon">
+          <End Role="Pokedex" Type="Self.Pokedex" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokedex">
+              <PropertyRef Name="ID_Pokedex" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="primerPokemon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_QuintoPokemon">
+          <End Role="Pokedex" Type="Self.Pokedex" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokedex">
+              <PropertyRef Name="ID_Pokedex" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="quintoPokemon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_SegundoPokemon">
+          <End Role="Pokedex" Type="Self.Pokedex" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokedex">
+              <PropertyRef Name="ID_Pokedex" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="segundoPokemon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_SextoPokemon">
+          <End Role="Pokedex" Type="Self.Pokedex" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokedex">
+              <PropertyRef Name="ID_Pokedex" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="sextoPokemon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_TercerPokemon">
+          <End Role="Pokedex" Type="Self.Pokedex" Multiplicity="1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokedex">
+              <PropertyRef Name="ID_Pokedex" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="tercerPokemon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PokemonEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Entrenadores" EntityType="Self.Entrenadore" />
+          <EntitySet Name="Equipos" EntityType="Self.Equipos" />
+          <EntitySet Name="Pokedexes" EntityType="Self.Pokedex" />
+          <AssociationSet Name="Fk_Entrenador" Association="Self.Fk_Entrenador">
+            <End Role="Entrenadores" EntitySet="Entrenadores" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_CuartoPokemon" Association="Self.Fk_CuartoPokemon">
+            <End Role="Pokedex" EntitySet="Pokedexes" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_PrimerPokemon" Association="Self.Fk_PrimerPokemon">
+            <End Role="Pokedex" EntitySet="Pokedexes" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_QuintoPokemon" Association="Self.Fk_QuintoPokemon">
+            <End Role="Pokedex" EntitySet="Pokedexes" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_SegundoPokemon" Association="Self.Fk_SegundoPokemon">
+            <End Role="Pokedex" EntitySet="Pokedexes" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_SextoPokemon" Association="Self.Fk_SextoPokemon">
+            <End Role="Pokedex" EntitySet="Pokedexes" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_TercerPokemon" Association="Self.Fk_TercerPokemon">
+            <End Role="Pokedex" EntitySet="Pokedexes" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PokemonModelStoreContainer" CdmEntityContainer="PokemonEntities">
+          <EntitySetMapping Name="Entrenadores">
+            <EntityTypeMapping TypeName="PokemonModel.Entrenadore">
+              <MappingFragment StoreEntitySet="Entrenadores">
+                <ScalarProperty Name="ID_Entrenadores" ColumnName="ID_Entrenadores" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="userPass" ColumnName="userPass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipos">
+            <EntityTypeMapping TypeName="PokemonModel.Equipos">
+              <MappingFragment StoreEntitySet="Equipos">
+                <ScalarProperty Name="ID_Equipos" ColumnName="ID_Equipos" />
+                <ScalarProperty Name="nombreEquipo" ColumnName="nombreEquipo" />
+                <ScalarProperty Name="entrenador" ColumnName="entrenador" />
+                <ScalarProperty Name="primerPokemon" ColumnName="primerPokemon" />
+                <ScalarProperty Name="segundoPokemon" ColumnName="segundoPokemon" />
+                <ScalarProperty Name="tercerPokemon" ColumnName="tercerPokemon" />
+                <ScalarProperty Name="cuartoPokemon" ColumnName="cuartoPokemon" />
+                <ScalarProperty Name="quintoPokemon" ColumnName="quintoPokemon" />
+                <ScalarProperty Name="sextoPokemon" ColumnName="sextoPokemon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pokedexes">
+            <EntityTypeMapping TypeName="PokemonModel.Pokedex">
+              <MappingFragment StoreEntitySet="Pokedex">
+                <ScalarProperty Name="ID_Pokedex" ColumnName="ID_Pokedex" />
+                <ScalarProperty Name="nombrePokemon" ColumnName="nombrePokemon" />
+                <ScalarProperty Name="alturaMetros" ColumnName="alturaMetros" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="pesoKg" ColumnName="pesoKg" />
+                <ScalarProperty Name="habilidad" ColumnName="habilidad" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="debilidad" ColumnName="debilidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

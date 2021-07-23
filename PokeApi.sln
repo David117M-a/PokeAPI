@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeApi", "PokeApi\PokeApi.csproj", "{B4CEB392-D38B-426A-B63D-FD37E8D36A3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{72F711E3-2BCA-4068-BDA0-D37BFF3AD7F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4CEB392-D38B-426A-B63D-FD37E8D36A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4CEB392-D38B-426A-B63D-FD37E8D36A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4CEB392-D38B-426A-B63D-FD37E8D36A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4CEB392-D38B-426A-B63D-FD37E8D36A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72F711E3-2BCA-4068-BDA0-D37BFF3AD7F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72F711E3-2BCA-4068-BDA0-D37BFF3AD7F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72F711E3-2BCA-4068-BDA0-D37BFF3AD7F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72F711E3-2BCA-4068-BDA0-D37BFF3AD7F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73FC03AC-3903-4528-B7FB-DD481E5890F9}
+	EndGlobalSection
+EndGlobal
